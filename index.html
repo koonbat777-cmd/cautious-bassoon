@@ -1,0 +1,638 @@
+import React, { useState, useEffect } from 'react';
+import { Github, Linkedin, Mail, ExternalLink, ChevronDown, Code2, Layout, Database, Terminal, MessageSquare, Phone, MessageCircle, MapPin, Monitor, PenTool, Users, User, X } from 'lucide-react';
+
+export default function Portfolio() {
+  const [activeSection, setActiveSection] = useState('home');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null); // เพิ่ม State สำหรับเก็บรูปภาพที่ถูกกดดู
+
+  // --- Typing Effect State ---
+  const [loopNum, setLoopNum] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [text, setText] = useState('');
+  const [typingSpeed, setTypingSpeed] = useState(150);
+  const roles = ['AI Engineer', 'Data Science', 'Graphic Design', 'UI/UX Design'];
+
+  useEffect(() => {
+    let ticker = setTimeout(() => {
+      const i = loopNum % roles.length;
+      const fullText = roles[i];
+
+      setText(isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1));
+      setTypingSpeed(isDeleting ? 50 : 150);
+
+      if (!isDeleting && text === fullText) {
+        setTimeout(() => setIsDeleting(true), 1500);
+      } else if (isDeleting && text === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+      }
+    }, typingSpeed);
+    return () => clearTimeout(ticker);
+  }, [text, isDeleting, typingSpeed, loopNum]);
+
+  // --- Scroll Reveal & Skill Bar Animation ---
+  const [skillsVisible, setSkillsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-10');
+          if (entry.target.id === 'skills-content') setSkillsVisible(true);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  // ตรวจจับการ Scroll เพื่อเปลี่ยน Style ของ Navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+      
+      // Update active section based on scroll position
+      const sections = ['home', 'about', 'skills', 'projects'];
+      const current = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 150 && rect.bottom >= 150;
+        }
+        return false;
+      });
+      if (current) setActiveSection(current);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollTo = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-white to-sky-50 text-slate-700 font-sans selection:bg-cyan-200 selection:text-cyan-900">
+      {/* Custom Animations */}
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-15px); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        @keyframes blink { 50% { border-color: transparent; } }
+        .typing-cursor { border-right: 3px solid #0ea5e9; padding-right: 4px; animation: blink 0.75s step-end infinite; }
+      `}</style>
+
+      {/* Navbar */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md border-b border-cyan-100 py-3 shadow-sm' : 'bg-transparent py-5'}`}>
+        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+          <div className="cursor-pointer" onClick={() => scrollTo('home')}>
+            <img 
+              src="https://i.postimg.cc/FRqMdpW5/LRu-Q.png" 
+              alt="โลโก้ใหม่" 
+              className="h-14 md:h-16 w-auto drop-shadow-sm hover:scale-105 transition-transform duration-300" 
+            />
+          </div>
+          <div className="hidden md:flex space-x-8">
+            {['Home', 'About', 'Skills', 'Projects'].map((item) => (
+              <button
+                key={item}
+                onClick={() => scrollTo(item.toLowerCase())}
+                className={`text-base font-bold transition-colors hover:text-cyan-600 ${activeSection === item.toLowerCase() ? 'text-cyan-600' : 'text-slate-500'}`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+          <button 
+            onClick={() => scrollTo('contact')}
+            className="px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-sky-500 text-white text-base font-semibold rounded-full hover:from-cyan-600 hover:to-sky-600 transition-all shadow-md shadow-cyan-500/30"
+          >
+            ติดต่อเลย
+          </button>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute top-20 -left-20 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-[80px] opacity-40 animate-blob"></div>
+        <div className="absolute top-40 -right-20 w-72 h-72 bg-sky-300 rounded-full mix-blend-multiply filter blur-[80px] opacity-40 animate-blob animation-delay-2000"></div>
+        
+        <div className="max-w-5xl mx-auto text-center z-10">
+          <div className="inline-block px-5 py-2 mb-8 rounded-full bg-cyan-100 border border-cyan-200 text-cyan-700 font-semibold text-base shadow-sm hover:scale-105 transition-transform">
+            🚀 พร้อมสำหรับการฝึกงานในปี [ปีที่ต้องการฝึก]
+          </div>
+          <h1 className="text-6xl md:text-8xl font-black tracking-tight mb-8 text-slate-800 drop-shadow-sm">
+            สวัสดีครับ, ผม <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-sky-500">เเบท</span> 👋
+          </h1>
+          <p className="text-2xl md:text-3xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed h-20 md:h-24">
+            นักศึกษาชั้นปีที่ 3 สาขา ITDI ที่หลงใหลในการ 
+            <br className="hidden md:block"/>
+            <span className="font-bold text-cyan-600 typing-cursor">{text}</span>
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button 
+              onClick={() => scrollTo('projects')}
+              className="w-full sm:w-auto px-10 py-4 text-lg bg-gradient-to-r from-cyan-500 to-sky-500 text-white rounded-full font-bold hover:shadow-[0_10px_20px_rgba(6,182,212,0.3)] hover:-translate-y-1 transition-all"
+            >
+              ดูผลงานของผม
+            </button>
+          </div>
+        </div>
+        
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer text-cyan-400 hover:text-cyan-600" onClick={() => scrollTo('about')}>
+          <ChevronDown size={32} />
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-24 px-6 bg-white/60 backdrop-blur-sm border-y border-cyan-50">
+        <div className="max-w-4xl mx-auto scroll-reveal opacity-0 translate-y-10 transition-all duration-1000 ease-out">
+          <div className="flex flex-col md:flex-row gap-12 items-center">
+            <div className="w-full md:w-1/3 aspect-square rounded-3xl overflow-hidden bg-gradient-to-tr from-cyan-100 to-sky-50 border border-white shadow-xl shadow-cyan-100/50 relative group animate-float">
+              <img 
+                src="https://i.postimg.cc/HsSLZDhL/width-433-webp.jpg" 
+                alt="รูปโปรไฟล์ของเเบท" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              />
+            </div>
+            <div className="w-full md:w-2/3">
+              <h2 className="text-3xl font-bold mb-6 text-slate-800">เกี่ยวกับผม</h2>
+              <p className="text-slate-600 text-lg mb-8 leading-relaxed">
+                ผมเป็นนักศึกษาจากมหาวิทยาลัยราชภัฏสงขลา ที่มีความสนใจอย่างมากในเรื่องของ ปัญญาประดิษฐ์ (AI) การจัดการข้อมูล และงานด้านการออกแบบกราฟิก (Graphic Design) ผมชอบผสมผสานความคิดสร้างสรรค์เข้ากับเทคโนโลยี ปัจจุบันผมกำลังมองหาโอกาสในการฝึกงานเพื่อนำความรู้ที่เรียนมาปรับใช้และพัฒนาทักษะการทำงานในสภาพแวดล้อมจริง
+              </p>
+              
+              {/* ข้อมูลส่วนตัว (ออกแบบใหม่) */}
+              <div className="bg-white rounded-3xl p-8 border border-cyan-100 shadow-sm hover:shadow-md transition-shadow">
+                <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-100 to-sky-100 text-cyan-600 flex items-center justify-center shadow-inner">
+                    <User size={20} />
+                  </div>
+                  ข้อมูลส่วนตัว
+                </h3>
+                
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                  <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:border-cyan-200 hover:bg-cyan-50/50 transition-colors cursor-default">
+                    <p className="text-xs text-cyan-600 font-black tracking-widest uppercase mb-1">ชื่อเล่น</p>
+                    <p className="text-base font-bold text-slate-700">เเบท</p>
+                  </div>
+                  
+                  <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:border-cyan-200 hover:bg-cyan-50/50 transition-colors cursor-default">
+                    <p className="text-xs text-cyan-600 font-black tracking-widest uppercase mb-1">อายุ</p>
+                    <p className="text-base font-bold text-slate-700">20 ปี</p>
+                  </div>
+                  
+                  <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:border-cyan-200 hover:bg-cyan-50/50 transition-colors cursor-default">
+                    <p className="text-xs text-cyan-600 font-black tracking-widest uppercase mb-1">สัญชาติ</p>
+                    <p className="text-base font-bold text-slate-700">ไทย</p>
+                  </div>
+                  
+                  <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:border-cyan-200 hover:bg-cyan-50/50 transition-colors cursor-default">
+                    <p className="text-xs text-cyan-600 font-black tracking-widest uppercase mb-1">ส่วนสูง</p>
+                    <p className="text-base font-bold text-slate-700">176 ซม.</p>
+                  </div>
+                  
+                  <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:border-cyan-200 hover:bg-cyan-50/50 transition-colors cursor-default">
+                    <p className="text-xs text-cyan-600 font-black tracking-widest uppercase mb-1">น้ำหนัก</p>
+                    <p className="text-base font-bold text-slate-700">59 กก.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="py-24 px-6">
+        <div id="skills-content" className="max-w-5xl mx-auto scroll-reveal opacity-0 translate-y-10 transition-all duration-1000 ease-out">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4 text-slate-800">ทักษะความสามารถ</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">ความเชี่ยวชาญและทักษะที่ผมมี พร้อมนำไปประยุกต์ใช้ในการทำงานจริง</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Tech & Tools */}
+            <div className="bg-white p-8 rounded-3xl border border-cyan-100 hover:border-cyan-300 hover:shadow-[0_15px_30px_rgba(6,182,212,0.1)] transition-all shadow-sm hover:-translate-y-2">
+              <div className="w-14 h-14 bg-gradient-to-br from-cyan-100 to-cyan-200 text-cyan-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
+                <Monitor size={26} />
+              </div>
+              <h3 className="text-xl font-bold mb-6 text-slate-800">Tech & Tools</h3>
+              <div className="flex flex-col gap-5">
+                {/* Skill 1 */}
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-semibold text-slate-700">HTML / CSS / JS</span>
+                    <span className="text-xs font-bold text-cyan-600">85%</span>
+                  </div>
+                  <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div className="bg-gradient-to-r from-cyan-400 to-cyan-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-100" style={{ width: skillsVisible ? '85%' : '0%' }}></div>
+                  </div>
+                </div>
+                {/* Skill 2 */}
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-semibold text-slate-700">React.js / Tailwind</span>
+                    <span className="text-xs font-bold text-cyan-600">80%</span>
+                  </div>
+                  <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div className="bg-gradient-to-r from-cyan-400 to-cyan-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-200" style={{ width: skillsVisible ? '80%' : '0%' }}></div>
+                  </div>
+                </div>
+                {/* Skill 3 */}
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-semibold text-slate-700">Node.js / Database</span>
+                    <span className="text-xs font-bold text-cyan-600">70%</span>
+                  </div>
+                  <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div className="bg-gradient-to-r from-cyan-400 to-cyan-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-300" style={{ width: skillsVisible ? '70%' : '0%' }}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Creative & Design */}
+            <div className="bg-white p-8 rounded-3xl border border-sky-100 hover:border-sky-300 hover:shadow-[0_15px_30px_rgba(14,165,233,0.1)] transition-all shadow-sm hover:-translate-y-2">
+              <div className="w-14 h-14 bg-gradient-to-br from-sky-100 to-sky-200 text-sky-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
+                <PenTool size={26} />
+              </div>
+              <h3 className="text-xl font-bold mb-6 text-slate-800">Creative & Design</h3>
+              <div className="flex flex-col gap-5">
+                {/* Skill 1 */}
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-semibold text-slate-700">UI/UX Design (Figma)</span>
+                    <span className="text-xs font-bold text-sky-600">85%</span>
+                  </div>
+                  <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div className="bg-gradient-to-r from-sky-400 to-sky-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-100" style={{ width: skillsVisible ? '85%' : '0%' }}></div>
+                  </div>
+                </div>
+                {/* Skill 2 */}
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-semibold text-slate-700">Graphic Design (Ps, Ai, Canva)</span>
+                    <span className="text-xs font-bold text-sky-600">80%</span>
+                  </div>
+                  <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div className="bg-gradient-to-r from-sky-400 to-sky-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-200" style={{ width: skillsVisible ? '80%' : '0%' }}></div>
+                  </div>
+                </div>
+                {/* Skill 3 */}
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-semibold text-slate-700">Video Editing</span>
+                    <span className="text-xs font-bold text-sky-600">75%</span>
+                  </div>
+                  <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div className="bg-gradient-to-r from-sky-400 to-sky-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-300" style={{ width: skillsVisible ? '75%' : '0%' }}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Soft Skills */}
+            <div className="bg-white p-8 rounded-3xl border border-teal-100 hover:border-teal-300 hover:shadow-[0_15px_30px_rgba(20,184,166,0.1)] transition-all shadow-sm hover:-translate-y-2">
+              <div className="w-14 h-14 bg-gradient-to-br from-teal-100 to-teal-200 text-teal-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
+                <Users size={26} />
+              </div>
+              <h3 className="text-xl font-bold mb-6 text-slate-800">Soft Skills</h3>
+              <div className="flex flex-col gap-5">
+                {/* Skill 1 */}
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-semibold text-slate-700">Teamwork</span>
+                    <span className="text-xs font-bold text-teal-600">95%</span>
+                  </div>
+                  <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div className="bg-gradient-to-r from-teal-400 to-teal-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-100" style={{ width: skillsVisible ? '95%' : '0%' }}></div>
+                  </div>
+                </div>
+                {/* Skill 2 */}
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-semibold text-slate-700">Problem Solving</span>
+                    <span className="text-xs font-bold text-teal-600">90%</span>
+                  </div>
+                  <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div className="bg-gradient-to-r from-teal-400 to-teal-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-200" style={{ width: skillsVisible ? '90%' : '0%' }}></div>
+                  </div>
+                </div>
+                {/* Skill 3 */}
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-semibold text-slate-700">Adaptability</span>
+                    <span className="text-xs font-bold text-teal-600">85%</span>
+                  </div>
+                  <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div className="bg-gradient-to-r from-teal-400 to-teal-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-300" style={{ width: skillsVisible ? '85%' : '0%' }}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-24 px-6 bg-gradient-to-b from-white to-cyan-50/50">
+        <div className="max-w-6xl mx-auto scroll-reveal opacity-0 translate-y-10 transition-all duration-1000 ease-out">
+          <div className="flex justify-between items-end mb-16">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-800">ผลงาน</h2>
+              <p className="text-slate-600 max-w-2xl">โปรเจกต์ที่ผมภูมิใจนำเสนอ ซึ่งได้ประยุกต์ใช้ความรู้เพื่อแก้ปัญหาจริง</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Project 1 */}
+            <div className="group rounded-3xl overflow-hidden bg-white border border-cyan-100 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(6,182,212,0.15)] hover:border-cyan-300">
+              <div 
+                className="h-64 bg-slate-50 relative overflow-hidden cursor-pointer"
+                onClick={() => setSelectedImage('https://i.postimg.cc/63B0HXDr/Fancy.png')}
+              >
+                <img 
+                  src="https://i.postimg.cc/63B0HXDr/Fancy.png" 
+                  alt="รูปผลงาน Project 1" 
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                />
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-3 text-slate-800 group-hover:text-cyan-600 transition-colors">ออกแบบโปสเตอร์ปาร์ตี้ (Fancy)</h3>
+                <p className="text-slate-600 mb-6 line-clamp-2">
+                  ผลงานการออกแบบโปสเตอร์โปรโมทงานอีเวนต์/ปาร์ตี้ เน้นการใช้สีสัน แสงเงา และการจัดวางองค์ประกอบให้ดึงดูดสายตา
+                </p>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  <span className="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">Adobe Photoshop</span>
+                  <span className="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">Adobe Illustrator</span>
+                  <span className="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">Canva</span>
+                </div>
+                <div className="flex gap-4">
+                  <button 
+                    onClick={() => setSelectedImage('https://i.postimg.cc/63B0HXDr/Fancy.png')}
+                    className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-cyan-600 transition-colors"
+                  >
+                    <ExternalLink size={18} /> ดูผลงานเต็ม
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Project 2 */}
+            <div className="group rounded-3xl overflow-hidden bg-white border border-sky-100 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(14,165,233,0.15)] hover:border-sky-300">
+              <div 
+                className="h-64 bg-slate-50 relative overflow-hidden cursor-pointer"
+                onClick={() => setSelectedImage('https://i.postimg.cc/pdWh4LLt/lxy-krathng.jpg')}
+              >
+                <img 
+                  src="https://i.postimg.cc/pdWh4LLt/lxy-krathng.jpg" 
+                  alt="รูปผลงาน Project 2" 
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                />
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-3 text-slate-800 group-hover:text-cyan-600 transition-colors">ออกแบบโปสเตอร์วันลอยกระทง</h3>
+                <p className="text-slate-600 mb-6 line-clamp-2">
+                  ผลงานการออกแบบสื่อประชาสัมพันธ์เทศกาลวันลอยกระทง เน้นการสื่อสารจุดประสงค์ของงานและสะท้อนความเป็นไทยอย่างสวยงาม
+                </p>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  <span className="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">Adobe Photoshop</span>
+                  <span className="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">Figma</span>
+                </div>
+                <div className="flex gap-4">
+                  <button 
+                    onClick={() => setSelectedImage('https://i.postimg.cc/pdWh4LLt/lxy-krathng.jpg')}
+                    className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-cyan-600 transition-colors"
+                  >
+                    <ExternalLink size={18} /> ดูผลงานเต็ม
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Project 3 */}
+            <div className="group rounded-3xl overflow-hidden bg-white border border-sky-100 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(14,165,233,0.15)] hover:border-sky-300">
+              <div 
+                className="h-64 bg-slate-50 relative overflow-hidden cursor-pointer"
+                onClick={() => setSelectedImage("https://i.postimg.cc/T32MLKd0/n-ks-ks'a-sa-khaw-cha-thekh-no-loy-sarsnthes-laea-nw-tkr-rmd-c-th-lr-wmc-dk-ckr-rm-khae-ngkem-FIFA-khays-nkh-a-tlad-OPOP.jpg")}
+              >
+                <img 
+                  src="https://i.postimg.cc/T32MLKd0/n-ks-ks'a-sa-khaw-cha-thekh-no-loy-sarsnthes-laea-nw-tkr-rmd-c-th-lr-wmc-dk-ckr-rm-khae-ngkem-FIFA-khays-nkh-a-tlad-OPOP.jpg" 
+                  alt="รูปผลงาน Project 3" 
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                />
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-3 text-slate-800 group-hover:text-cyan-600 transition-colors">ทำกิจกรรมจัดแข่ง FIFA และ RoV</h3>
+                <p className="text-slate-600 mb-4 line-clamp-2">
+                  ผลงานการจัดกิจกรรมแข่งขัน E-Sports เกม FIFA และ RoV โดยมีส่วนร่วมในการจัดการแข่งขัน ดูแลภาพรวม และประสานงานต่างๆ ภายในงาน
+                </p>
+                
+                {/* Mini Gallery (เพิ่มรูปภาพหลายรูป) */}
+                <div className="flex flex-wrap gap-3 mb-6">
+                  <div 
+                    className="w-16 h-16 rounded-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-cyan-400 transition-all shadow-sm"
+                    onClick={() => setSelectedImage("https://i.postimg.cc/T32MLKd0/n-ks-ks'a-sa-khaw-cha-thekh-no-loy-sarsnthes-laea-nw-tkr-rmd-c-th-lr-wmc-dk-ckr-rm-khae-ngkem-FIFA-khays-nkh-a-tlad-OPOP.jpg")}
+                    title="ดูรูปภาพที่ 1"
+                  >
+                    <img src="https://i.postimg.cc/T32MLKd0/n-ks-ks'a-sa-khaw-cha-thekh-no-loy-sarsnthes-laea-nw-tkr-rmd-c-th-lr-wmc-dk-ckr-rm-khae-ngkem-FIFA-khays-nkh-a-tlad-OPOP.jpg" className="w-full h-full object-cover" alt="Gallery 1" />
+                  </div>
+                  <div 
+                    className="w-16 h-16 rounded-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-cyan-400 transition-all shadow-sm"
+                    onClick={() => setSelectedImage("https://i.postimg.cc/dVQPkhsj/phaph-brryakas-kar-khae-ngkh-n-ROV-SCIFEST-2024-c-dkh-nrahw-angw-nth-31-k-kh-1-s-kh-2567.jpg")}
+                    title="ดูรูปบรรยากาศงาน RoV"
+                  >
+                    <img src="https://i.postimg.cc/dVQPkhsj/phaph-brryakas-kar-khae-ngkh-n-ROV-SCIFEST-2024-c-dkh-nrahw-angw-nth-31-k-kh-1-s-kh-2567.jpg" className="w-full h-full object-cover" alt="Gallery 2" />
+                  </div>
+                  <div 
+                    className="w-16 h-16 rounded-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-cyan-400 transition-all shadow-sm"
+                    onClick={() => setSelectedImage("https://i.postimg.cc/T32MLKdc/ekhe-ngrov.jpg")}
+                    title="ดูรูปบรรยากาศงานแข่ง RoV"
+                  >
+                    <img src="https://i.postimg.cc/T32MLKdc/ekhe-ngrov.jpg" className="w-full h-full object-cover" alt="Gallery 3" />
+                  </div>
+                  <div 
+                    className="w-16 h-16 rounded-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-cyan-400 transition-all shadow-sm"
+                    onClick={() => setSelectedImage("https://i.postimg.cc/0y5RMzkY/ekhe-ngrov2.jpg")}
+                    title="ดูรูปบรรยากาศงานแข่ง RoV เพิ่มเติม"
+                  >
+                    <img src="https://i.postimg.cc/0y5RMzkY/ekhe-ngrov2.jpg" className="w-full h-full object-cover" alt="Gallery 4" />
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-8">
+                  <span className="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">Event Organizer</span>
+                  <span className="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">E-Sports</span>
+                  <span className="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">Management</span>
+                </div>
+                <div className="flex gap-4">
+                  <button 
+                    onClick={() => setSelectedImage("https://i.postimg.cc/dVQPkhsj/phaph-brryakas-kar-khae-ngkh-n-ROV-SCIFEST-2024-c-dkh-nrahw-angw-nth-31-k-kh-1-s-kh-2567.jpg")}
+                    className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-cyan-600 transition-colors"
+                  >
+                    <ExternalLink size={18} /> ดูรูปภาพเพิ่มเติม
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Project 4 */}
+            <div className="group rounded-3xl overflow-hidden bg-white border border-sky-100 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(14,165,233,0.15)] hover:border-sky-300">
+              <div 
+                className="h-64 bg-slate-50 relative overflow-hidden cursor-pointer"
+                onClick={() => setSelectedImage('https://i.postimg.cc/DzWk2R6q/Screenshot-2026-03-09-150904.png')}
+              >
+                <img 
+                  src="https://i.postimg.cc/DzWk2R6q/Screenshot-2026-03-09-150904.png" 
+                  alt="รูปผลงาน Graphic & UI Design" 
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                />
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-3 text-slate-800 group-hover:text-sky-600 transition-colors">ออกแบบ UI/UX (หน้า Contact)</h3>
+                <p className="text-slate-600 mb-6 line-clamp-2">
+                  ผลงานการออกแบบ User Interface สำหรับหน้าช่องทางการติดต่อในสไตล์ Dark Mode เน้นความสวยงาม ทันสมัย และตอบโจทย์ผู้ใช้งาน
+                </p>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  <span className="px-3 py-1 bg-sky-50 border border-sky-100 text-sky-700 rounded-lg text-xs font-semibold">Figma</span>
+                  <span className="px-3 py-1 bg-sky-50 border border-sky-100 text-sky-700 rounded-lg text-xs font-semibold">Adobe Photoshop</span>
+                </div>
+                <div className="flex gap-4">
+                  <button 
+                    onClick={() => setSelectedImage('https://i.postimg.cc/DzWk2R6q/Screenshot-2026-03-09-150904.png')}
+                    className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-sky-600 transition-colors"
+                  >
+                    <ExternalLink size={18} /> ดูผลงานเต็ม
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Project 5: YouTube Video */}
+            <div className="group rounded-3xl overflow-hidden bg-white border border-indigo-100 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(99,102,241,0.15)] hover:border-indigo-300 md:col-span-2 lg:col-span-1">
+              <div className="h-64 bg-slate-900 relative overflow-hidden">
+                <iframe 
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/oNMtRT_6ykU" 
+                  title="YouTube video player" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-3 text-slate-800 group-hover:text-indigo-600 transition-colors">ผลงานวิดีโอ / ตัดต่อ (Video Production)</h3>
+                <p className="text-slate-600 mb-6 line-clamp-2">
+                  ผลงานการตัดต่อและสร้างสรรค์วิดีโอ นำเสนอเรื่องราวผ่านภาพเคลื่อนไหวและเสียงประกอบ เพื่อใช้ในการสื่อสารและโปรโมท
+                </p>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  <span className="px-3 py-1 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded-lg text-xs font-semibold">Video Editing</span>
+                  <span className="px-3 py-1 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded-lg text-xs font-semibold">Content Creator</span>
+                  <span className="px-3 py-1 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded-lg text-xs font-semibold">YouTube</span>
+                </div>
+                <div className="flex gap-4">
+                  <a href="https://www.youtube.com/watch?v=oNMtRT_6ykU" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">
+                    <ExternalLink size={18} /> เปิดดูบน YouTube
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-24 px-6 bg-gradient-to-b from-cyan-50/50 to-sky-100 text-slate-800 flex justify-center items-center relative overflow-hidden">
+        <div className="max-w-5xl w-full bg-white/80 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-16 shadow-[0_20px_60px_rgba(6,182,212,0.15)] relative border border-white scroll-reveal opacity-0 translate-y-10 transition-all duration-1000 ease-out delay-100">
+          {/* Decorative elements */}
+          <div className="absolute top-[20%] left-[10%] w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_15px_3px_rgba(34,211,238,0.4)]"></div>
+          <div className="absolute top-[40%] right-[15%] w-16 h-16 rounded-full border-[2px] border-sky-300/30"></div>
+          <div className="absolute bottom-[20%] left-[30%] w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-200 to-sky-200 opacity-50 blur-sm"></div>
+          
+          <div className="flex flex-col items-center mb-12 relative z-10">
+            <div className="w-16 h-16 bg-gradient-to-br from-cyan-100 to-sky-100 rounded-full flex items-center justify-center mb-6 shadow-inner border border-white">
+              <MessageSquare className="text-cyan-600" size={28} />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-600 tracking-wide">ช่องทางการติดต่อ</h2>
+            <p className="text-slate-500 font-medium">ยินดีที่ได้รู้จักครับ สามารถติดต่อผมได้ตามช่องทางด้านล่างเลย</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 relative z-10">
+            {/* Email */}
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=narongchaipm2004@gmail.com" target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-slate-200 shadow-sm rounded-3xl p-8 flex flex-col items-center hover:bg-cyan-50 hover:border-cyan-400 transition-all hover:shadow-lg group cursor-pointer">
+              <div className="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-cyan-500 transition-all duration-300">
+                <Mail className="text-cyan-500 group-hover:text-white transition-colors" size={28} />
+              </div>
+              <p className="text-xs text-cyan-600 font-black tracking-widest mb-3 uppercase">Email</p>
+              <p className="text-slate-700 font-bold text-sm md:text-base">narongchaipm2004@gmail.com</p>
+            </a>
+
+            {/* Phone */}
+            <a href="tel:0625377142" className="bg-white border-2 border-slate-200 shadow-sm rounded-3xl p-8 flex flex-col items-center hover:bg-sky-50 hover:border-sky-400 transition-all hover:shadow-lg group cursor-pointer">
+              <div className="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-sky-500 transition-all duration-300">
+                <Phone className="text-sky-500 group-hover:text-white transition-colors" size={28} />
+              </div>
+              <p className="text-xs text-sky-600 font-black tracking-widest mb-3 uppercase">Phone</p>
+              <p className="text-slate-700 font-bold text-sm md:text-base">062-537-7142</p>
+            </a>
+
+            {/* Line ID */}
+            <a href="https://line.me/ti/p/~narongchai310547" target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-slate-200 shadow-sm rounded-3xl p-8 flex flex-col items-center hover:bg-teal-50 hover:border-teal-400 transition-all hover:shadow-lg group cursor-pointer">
+              <div className="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-teal-500 transition-all duration-300">
+                <MessageCircle className="text-teal-500 group-hover:text-white transition-colors" size={28} />
+              </div>
+              <p className="text-xs text-teal-600 font-black tracking-widest mb-3 uppercase">Line ID</p>
+              <p className="text-slate-700 font-bold text-sm md:text-base">narongchai310547</p>
+            </a>
+          </div>
+
+          <div className="border-t border-slate-200 pt-8 relative z-10">
+            <div className="flex items-center gap-4 text-slate-600 justify-center md:justify-start md:ml-6 bg-slate-50/50 py-3 px-6 rounded-full w-fit mx-auto md:mx-0 border border-slate-100">
+              <MapPin size={20} className="text-cyan-500" />
+              <span className="text-sm font-semibold">22 ม.6 ต.บางกุ้ง อ.ห้วยยอด จ.ตรัง 92210</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="py-8 text-center text-slate-500 text-sm bg-sky-100/50">
+        <p>© {new Date().getFullYear()} เเบท. All rights reserved.</p>
+      </footer>
+
+      {/* Image Modal (Lightbox) */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/80 p-4 md:p-10 backdrop-blur-md transition-all"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative flex justify-center w-full max-w-5xl animate-in fade-in zoom-in duration-300">
+            <img 
+              src={selectedImage} 
+              alt="ภาพผลงานขนาดเต็ม" 
+              className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10"
+              onClick={(e) => e.stopPropagation()} 
+            />
+            <button 
+              className="absolute -top-12 right-0 md:-right-12 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-2 rounded-full transition-all"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X size={28} />
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

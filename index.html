@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - เเบท (AI Engineer)</title>
+    <title>Portfolio - เเบท (Graphic / AI)</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Feather Icons (แทนที่ Lucide React) -->
+    <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- Custom Styles -->
@@ -28,7 +28,7 @@
         
         @keyframes blink { 50% { border-color: transparent; } }
         .typing-cursor { 
-            border-right: 3px solid #0ea5e9; 
+            border-right: 3px solid #06b6d4; /* cyan-500 */
             padding-right: 4px; 
             animation: blink 0.75s step-end infinite; 
         }
@@ -58,97 +58,107 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-cyan-50 via-white to-sky-50 text-slate-700 selection:bg-cyan-200 selection:text-cyan-900">
+<body class="bg-slate-950 text-slate-300 selection:bg-fuchsia-500/30 selection:text-fuchsia-200">
 
     <!-- Navbar -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-5">
         <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
             <div class="cursor-pointer" onclick="scrollToSection('home')">
-                <img src="https://i.postimg.cc/FRqMdpW5/LRu-Q.png" alt="โลโก้ใหม่" class="h-14 md:h-16 w-auto drop-shadow-sm hover:scale-105 transition-transform duration-300" />
+                <!-- โลโก้อาจจะมืดไปนิดบนพื้นดำ แต่ถ้าเป็นไฟล์ PNG โปร่งใสที่มีสีสันจะดูดีมาก -->
+                <img src="https://i.postimg.cc/FRqMdpW5/LRu-Q.png" alt="โลโก้ใหม่" class="h-14 md:h-16 w-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] hover:scale-105 transition-transform duration-300" />
             </div>
             <div class="hidden md:flex space-x-8">
-                <button onclick="scrollToSection('home')" class="nav-btn text-base font-bold transition-colors hover:text-cyan-600 text-cyan-600" data-target="home">Home</button>
-                <button onclick="scrollToSection('about')" class="nav-btn text-base font-bold transition-colors hover:text-cyan-600 text-slate-500" data-target="about">About</button>
-                <button onclick="scrollToSection('skills')" class="nav-btn text-base font-bold transition-colors hover:text-cyan-600 text-slate-500" data-target="skills">Skills</button>
-                <button onclick="scrollToSection('projects')" class="nav-btn text-base font-bold transition-colors hover:text-cyan-600 text-slate-500" data-target="projects">Projects</button>
+                <button onclick="scrollToSection('home')" class="nav-btn text-base font-bold transition-colors hover:text-cyan-400 text-cyan-400" data-target="home">Home</button>
+                <button onclick="scrollToSection('about')" class="nav-btn text-base font-bold transition-colors hover:text-cyan-400 text-slate-400" data-target="about">About</button>
+                <button onclick="scrollToSection('skills')" class="nav-btn text-base font-bold transition-colors hover:text-cyan-400 text-slate-400" data-target="skills">Skills</button>
+                <button onclick="scrollToSection('projects')" class="nav-btn text-base font-bold transition-colors hover:text-cyan-400 text-slate-400" data-target="projects">Projects</button>
             </div>
-            <button onclick="scrollToSection('contact')" class="px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-sky-500 text-white text-base font-semibold rounded-full hover:from-cyan-600 hover:to-sky-600 transition-all shadow-md shadow-cyan-500/30">
+            <button onclick="scrollToSection('contact')" class="px-6 py-2.5 bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white text-base font-semibold rounded-full hover:from-fuchsia-400 hover:to-cyan-400 transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)]">
                 ติดต่อเลย
             </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+    <section id="home" class="min-h-screen flex items-center justify-center pt-24 pb-12 px-6 relative overflow-hidden">
         <!-- Background Decorative Elements -->
-        <div class="absolute top-20 -left-20 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-[80px] opacity-40 animate-blob"></div>
-        <div class="absolute top-40 -right-20 w-72 h-72 bg-sky-300 rounded-full mix-blend-multiply filter blur-[80px] opacity-40 animate-blob animation-delay-2000"></div>
+        <div class="absolute top-20 -left-20 w-96 h-96 bg-blue-600 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob"></div>
+        <div class="absolute top-40 -right-20 w-96 h-96 bg-cyan-600 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-2000"></div>
         
-        <div class="max-w-5xl mx-auto text-center z-10">
-            <h1 class="text-6xl md:text-8xl font-black tracking-tight mb-8 text-slate-800 drop-shadow-sm">
-                สวัสดีครับ, ผม <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-sky-500">เเบท</span> 👋
-            </h1>
-            <p class="text-2xl md:text-3xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed h-20 md:h-24">
-                นักศึกษาชั้นปีที่ 3 สาขา ITDI ที่หลงใหลในการ 
-                <br class="hidden md:block"/>
-                <span id="typing-text" class="font-bold text-cyan-600 typing-cursor"></span>
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button onclick="scrollToSection('projects')" class="w-full sm:w-auto px-10 py-4 text-lg bg-gradient-to-r from-cyan-500 to-sky-500 text-white rounded-full font-bold hover:shadow-[0_10px_20px_rgba(6,182,212,0.3)] hover:-translate-y-1 transition-all">
-                    ดูผลงานของผม
-                </button>
+        <div class="max-w-6xl mx-auto z-10 w-full flex flex-col-reverse md:flex-row items-center justify-between gap-12 mt-10 md:mt-0">
+            <!-- Text Part (Left) -->
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-4 md:mb-6 text-white drop-shadow-lg leading-tight">
+                    สวัสดีครับ ผม <br class="hidden md:block"/>
+                    <span class="text-cyan-400">ณรงค์ชัย ภูมิเมือง</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-400 mb-8 leading-relaxed max-w-xl mx-auto md:mx-0 h-24 md:h-28">
+                    นักศึกษาชั้นปีที่ 3 สาขาเทคโนโลยีสารสนเทศและนวัตกรรมดิจิทัล (ITDI)<br class="hidden md:block"/>
+                    ผู้มีความมุ่งมั่นและพร้อมพัฒนาศักยภาพในสายงาน <br class="hidden lg:block"/><span id="typing-text" class="font-bold text-cyan-400 typing-cursor"></span>
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                    <button onclick="scrollToSection('projects')" class="w-full sm:w-auto px-8 py-3.5 text-lg bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white rounded-full font-bold hover:shadow-[0_10px_30px_rgba(217,70,239,0.4)] hover:-translate-y-1 transition-all">
+                        ดูผลงานของผม
+                    </button>
+                </div>
+            </div>
+
+            <!-- Image Part (Right) -->
+            <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+                <div class="w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] rounded-full md:rounded-[3rem] overflow-hidden bg-slate-800 border-2 border-cyan-500/30 shadow-[0_0_40px_rgba(6,182,212,0.2)] relative group animate-float">
+                    <img src="https://i.postimg.cc/GtyCSBNh/bat1.png" alt="รูปโปรไฟล์ของเเบท" class="w-full h-full object-cover object-top scale-125 origin-top group-hover:scale-[1.35] transition-transform duration-500" />
+                </div>
             </div>
         </div>
         
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer text-cyan-400 hover:text-cyan-600" onclick="scrollToSection('about')">
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer text-cyan-400 hover:text-cyan-300 hidden md:block" onclick="scrollToSection('about')">
             <i data-feather="chevron-down" class="w-8 h-8"></i>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 px-6 bg-white/60 backdrop-blur-sm border-y border-cyan-50">
+    <section id="about" class="py-24 px-6 bg-slate-900/50 backdrop-blur-sm border-y border-white/5 relative">
         <div class="max-w-4xl mx-auto scroll-reveal">
-            <div class="flex flex-col md:flex-row gap-12 items-center">
-                <div class="w-full md:w-1/3 aspect-square rounded-3xl overflow-hidden bg-gradient-to-tr from-cyan-100 to-sky-50 border border-white shadow-xl shadow-cyan-100/50 relative group animate-float">
-                    <img src="https://i.postimg.cc/HsSLZDhL/width-433-webp.jpg" alt="รูปโปรไฟล์ของเเบท" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div class="w-full md:w-2/3">
-                    <h2 class="text-3xl font-bold mb-6 text-slate-800">เกี่ยวกับผม</h2>
-                    <p class="text-slate-600 text-lg mb-8 leading-relaxed">
-                        ผมเป็นนักศึกษาจากมหาวิทยาลัยราชภัฏสงขลา ที่มีความสนใจอย่างมากในเรื่องของ ปัญญาประดิษฐ์ (AI) การจัดการข้อมูล และงานด้านการออกแบบกราฟิก (Graphic Design) ผมชอบผสมผสานความคิดสร้างสรรค์เข้ากับเทคโนโลยี ปัจจุบันผมกำลังมองหาโอกาสในการฝึกงานเพื่อนำความรู้ที่เรียนมาปรับใช้และพัฒนาทักษะการทำงานในสภาพแวดล้อมจริง
-                    </p>
-                    
-                    <!-- ข้อมูลส่วนตัว -->
-                    <div class="bg-white rounded-3xl p-8 border border-cyan-100 shadow-sm hover:shadow-md transition-shadow">
-                        <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-100 to-sky-100 text-cyan-600 flex items-center justify-center shadow-inner">
-                                <i data-feather="user" class="w-5 h-5"></i>
-                            </div>
-                            ข้อมูลส่วนตัว
-                        </h3>
-                        
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-                            <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:border-cyan-200 hover:bg-cyan-50/50 transition-colors cursor-default">
-                                <p class="text-xs text-cyan-600 font-black tracking-widest uppercase mb-1">ชื่อเล่น</p>
-                                <p class="text-base font-bold text-slate-700">เเบท</p>
-                            </div>
-                            <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:border-cyan-200 hover:bg-cyan-50/50 transition-colors cursor-default">
-                                <p class="text-xs text-cyan-600 font-black tracking-widest uppercase mb-1">อายุ</p>
-                                <p class="text-base font-bold text-slate-700">21 ปี</p>
-                            </div>
-                            <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:border-cyan-200 hover:bg-cyan-50/50 transition-colors cursor-default">
-                                <p class="text-xs text-cyan-600 font-black tracking-widest uppercase mb-1">สัญชาติ</p>
-                                <p class="text-base font-bold text-slate-700">ไทย</p>
-                            </div>
-                            <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:border-cyan-200 hover:bg-cyan-50/50 transition-colors cursor-default">
-                                <p class="text-xs text-cyan-600 font-black tracking-widest uppercase mb-1">ส่วนสูง</p>
-                                <p class="text-base font-bold text-slate-700">176 ซม.</p>
-                            </div>
-                            <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:border-cyan-200 hover:bg-cyan-50/50 transition-colors cursor-default">
-                                <p class="text-xs text-cyan-600 font-black tracking-widest uppercase mb-1">น้ำหนัก</p>
-                                <p class="text-base font-bold text-slate-700">59 กก.</p>
-                            </div>
-                        </div>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">เกี่ยวกับผม</h2>
+                <p class="text-slate-400 text-lg leading-relaxed max-w-3xl mx-auto">
+                    ผมเป็นนักศึกษาจากมหาวิทยาลัยราชภัฏสงขลา ที่มีความสนใจและมุ่งมั่นในสายงาน  <strong class="text-cyan-400">การออกแบบกราฟิก (Graphic Design)</strong> และ <strong class="text-cyan-400">ปัญญาประดิษฐ์ (AI)</strong> ผมชอบการแก้ไขปัญหาและช่วยเหลือผู้ใช้งาน (Troubleshooting) ผสมผสานกับความชื่นชอบในงานสร้างสรรค์และเทคโนโลยีใหม่ๆ ปัจจุบันกำลังมองหาโอกาสฝึกงานเพื่อนำความรู้มาประยุกต์ใช้และพัฒนาทักษะในสภาพแวดล้อมการทำงานจริง
+                </p>
+            </div>
+            
+            <!-- ข้อมูลส่วนตัว -->
+            <div class="bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10 shadow-lg hover:border-white/20 transition-all max-w-3xl mx-auto">
+                <h3 class="text-xl font-bold text-white mb-6 flex items-center justify-center md:justify-start gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-fuchsia-500/20 to-cyan-500/20 text-cyan-400 border border-white/10 flex items-center justify-center">
+                        <i data-feather="user" class="w-5 h-5"></i>
+                    </div>
+                    ข้อมูลส่วนตัว
+                </h3>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 text-center md:text-left">
+                    <div class="bg-slate-900/80 rounded-2xl p-4 border border-white/5 hover:border-cyan-400/50 transition-colors cursor-default col-span-2 md:col-span-3">
+                        <p class="text-xs text-cyan-400 font-black tracking-widest uppercase mb-1">ชื่อ-นามสกุล</p>
+                        <p class="text-base font-bold text-white">นาย ณรงค์ชัย ภูมิเมือง</p>
+                    </div>
+                    <div class="bg-slate-900/80 rounded-2xl p-4 border border-white/5 hover:border-fuchsia-500/50 transition-colors cursor-default">
+                        <p class="text-xs text-fuchsia-400 font-black tracking-widest uppercase mb-1">ชื่อเล่น</p>
+                        <p class="text-base font-bold text-white">เเบท</p>
+                    </div>
+                    <div class="bg-slate-900/80 rounded-2xl p-4 border border-white/5 hover:border-fuchsia-500/50 transition-colors cursor-default">
+                        <p class="text-xs text-fuchsia-400 font-black tracking-widest uppercase mb-1">อายุ</p>
+                        <p class="text-base font-bold text-white">21 ปี</p>
+                    </div>
+                    <div class="bg-slate-900/80 rounded-2xl p-4 border border-white/5 hover:border-cyan-400/50 transition-colors cursor-default">
+                        <p class="text-xs text-cyan-400 font-black tracking-widest uppercase mb-1">สัญชาติ</p>
+                        <p class="text-base font-bold text-white">ไทย</p>
+                    </div>
+                    <div class="bg-slate-900/80 rounded-2xl p-4 border border-white/5 hover:border-cyan-400/50 transition-colors cursor-default">
+                        <p class="text-xs text-cyan-400 font-black tracking-widest uppercase mb-1">ส่วนสูง</p>
+                        <p class="text-base font-bold text-white">176 ซม.</p>
+                    </div>
+                    <div class="bg-slate-900/80 rounded-2xl p-4 border border-white/5 hover:border-purple-400/50 transition-colors cursor-default">
+                        <p class="text-xs text-purple-400 font-black tracking-widest uppercase mb-1">น้ำหนัก</p>
+                        <p class="text-base font-bold text-white">59 กก.</p>
                     </div>
                 </div>
             </div>
@@ -156,120 +166,122 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-24 px-6">
-        <div id="skills-content" class="max-w-5xl mx-auto scroll-reveal">
+    <section id="skills" class="py-24 px-6 relative">
+        <div class="absolute right-0 top-1/2 w-64 h-64 bg-purple-600 rounded-full mix-blend-screen filter blur-[100px] opacity-20"></div>
+        
+        <div id="skills-content" class="max-w-5xl mx-auto scroll-reveal relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4 text-slate-800">ทักษะความสามารถ</h2>
-                <p class="text-slate-600 max-w-2xl mx-auto">ความเชี่ยวชาญและทักษะที่ผมมี พร้อมนำไปประยุกต์ใช้ในการทำงานจริง</p>
+                <h2 class="text-3xl font-bold mb-4 text-white">ทักษะความสามารถ</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">ความเชี่ยวชาญทางด้านไอทีและการออกแบบ เพื่อการทำงานที่ครอบคลุม</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Tech & Tools -->
-                <div class="bg-white p-8 rounded-3xl border border-cyan-100 hover:border-cyan-300 hover:shadow-[0_15px_30px_rgba(6,182,212,0.1)] transition-all shadow-sm hover:-translate-y-2">
-                    <div class="w-14 h-14 bg-gradient-to-br from-cyan-100 to-cyan-200 text-cyan-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
+                <div class="bg-slate-900/80 backdrop-blur-md p-8 rounded-3xl border border-white/10 hover:border-cyan-400/50 hover:shadow-[0_15px_30px_rgba(6,182,212,0.15)] transition-all shadow-lg hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
                         <i data-feather="monitor" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-6 text-slate-800">Tech & Tools</h3>
+                    <h3 class="text-xl font-bold mb-6 text-white">Tech & Programming</h3>
                     <div class="flex flex-col gap-5">
                         <div>
                             <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-semibold text-slate-700">HTML / CSS / JS</span>
-                                <span class="text-xs font-bold text-cyan-600">85%</span>
+                                <span class="text-sm font-semibold text-slate-300">HTML / CSS / JS</span>
+                                <span class="text-xs font-bold text-cyan-400">85%</span>
                             </div>
-                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-gradient-to-r from-cyan-400 to-cyan-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-100 w-0 skill-bar" data-width="85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-semibold text-slate-700">React.js / Tailwind</span>
-                                <span class="text-xs font-bold text-cyan-600">80%</span>
-                            </div>
-                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-gradient-to-r from-cyan-400 to-cyan-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-200 w-0 skill-bar" data-width="80%"></div>
+                            <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-gradient-to-r from-cyan-600 to-cyan-400 h-2.5 rounded-full transition-all duration-1000 ease-out delay-100 w-0 skill-bar" data-width="85%"></div>
                             </div>
                         </div>
                         <div>
                             <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-semibold text-slate-700">Node.js / Database</span>
-                                <span class="text-xs font-bold text-cyan-600">70%</span>
+                                <span class="text-sm font-semibold text-slate-300">Python & AI Basics</span>
+                                <span class="text-xs font-bold text-cyan-400">80%</span>
                             </div>
-                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-gradient-to-r from-cyan-400 to-cyan-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-300 w-0 skill-bar" data-width="70%"></div>
+                            <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-gradient-to-r from-cyan-600 to-cyan-400 h-2.5 rounded-full transition-all duration-1000 ease-out delay-200 w-0 skill-bar" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm font-semibold text-slate-300">Database (SQL/NoSQL)</span>
+                                <span class="text-xs font-bold text-cyan-400">75%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-gradient-to-r from-cyan-600 to-cyan-400 h-2.5 rounded-full transition-all duration-1000 ease-out delay-300 w-0 skill-bar" data-width="75%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Creative & Design -->
-                <div class="bg-white p-8 rounded-3xl border border-sky-100 hover:border-sky-300 hover:shadow-[0_15px_30px_rgba(14,165,233,0.1)] transition-all shadow-sm hover:-translate-y-2">
-                    <div class="w-14 h-14 bg-gradient-to-br from-sky-100 to-sky-200 text-sky-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
+                <div class="bg-slate-900/80 backdrop-blur-md p-8 rounded-3xl border border-white/10 hover:border-fuchsia-400/50 hover:shadow-[0_15px_30px_rgba(217,70,239,0.15)] transition-all shadow-lg hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-fuchsia-500/10 border border-fuchsia-500/30 text-fuchsia-400 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
                         <i data-feather="pen-tool" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-6 text-slate-800">Creative & Design</h3>
+                    <h3 class="text-xl font-bold mb-6 text-white">Creative & Design</h3>
                     <div class="flex flex-col gap-5">
                         <div>
                             <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-semibold text-slate-700">UI/UX Design (Figma)</span>
-                                <span class="text-xs font-bold text-sky-600">85%</span>
+                                <span class="text-sm font-semibold text-slate-300">UI/UX Design (Figma)</span>
+                                <span class="text-xs font-bold text-fuchsia-400">85%</span>
                             </div>
-                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-gradient-to-r from-sky-400 to-sky-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-100 w-0 skill-bar" data-width="85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-semibold text-slate-700">Graphic Design (Ps, Ai, Canva)</span>
-                                <span class="text-xs font-bold text-sky-600">80%</span>
-                            </div>
-                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-gradient-to-r from-sky-400 to-sky-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-200 w-0 skill-bar" data-width="80%"></div>
+                            <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-gradient-to-r from-fuchsia-600 to-fuchsia-400 h-2.5 rounded-full transition-all duration-1000 ease-out delay-100 w-0 skill-bar" data-width="85%"></div>
                             </div>
                         </div>
                         <div>
                             <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-semibold text-slate-700">Video Editing</span>
-                                <span class="text-xs font-bold text-sky-600">75%</span>
+                                <span class="text-sm font-semibold text-slate-300">Graphic Design (Ps, Ai, Canva)</span>
+                                <span class="text-xs font-bold text-fuchsia-400">80%</span>
                             </div>
-                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-gradient-to-r from-sky-400 to-sky-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-300 w-0 skill-bar" data-width="75%"></div>
+                            <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-gradient-to-r from-fuchsia-600 to-fuchsia-400 h-2.5 rounded-full transition-all duration-1000 ease-out delay-200 w-0 skill-bar" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm font-semibold text-slate-300">Video Editing</span>
+                                <span class="text-xs font-bold text-fuchsia-400">75%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-gradient-to-r from-fuchsia-600 to-fuchsia-400 h-2.5 rounded-full transition-all duration-1000 ease-out delay-300 w-0 skill-bar" data-width="75%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Soft Skills -->
-                <div class="bg-white p-8 rounded-3xl border border-teal-100 hover:border-teal-300 hover:shadow-[0_15px_30px_rgba(20,184,166,0.1)] transition-all shadow-sm hover:-translate-y-2">
-                    <div class="w-14 h-14 bg-gradient-to-br from-teal-100 to-teal-200 text-teal-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
+                <div class="bg-slate-900/80 backdrop-blur-md p-8 rounded-3xl border border-white/10 hover:border-purple-400/50 hover:shadow-[0_15px_30px_rgba(168,85,247,0.15)] transition-all shadow-lg hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-purple-500/10 border border-purple-500/30 text-purple-400 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
                         <i data-feather="users" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-6 text-slate-800">Soft Skills</h3>
+                    <h3 class="text-xl font-bold mb-6 text-white">Soft Skills</h3>
                     <div class="flex flex-col gap-5">
                         <div>
                             <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-semibold text-slate-700">Teamwork</span>
-                                <span class="text-xs font-bold text-teal-600">95%</span>
+                                <span class="text-sm font-semibold text-slate-300">Teamwork / Service Mind</span>
+                                <span class="text-xs font-bold text-purple-400">95%</span>
                             </div>
-                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-gradient-to-r from-teal-400 to-teal-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-100 w-0 skill-bar" data-width="95%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-semibold text-slate-700">Problem Solving</span>
-                                <span class="text-xs font-bold text-teal-600">90%</span>
-                            </div>
-                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-gradient-to-r from-teal-400 to-teal-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-200 w-0 skill-bar" data-width="90%"></div>
+                            <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-gradient-to-r from-purple-600 to-purple-400 h-2.5 rounded-full transition-all duration-1000 ease-out delay-100 w-0 skill-bar" data-width="95%"></div>
                             </div>
                         </div>
                         <div>
                             <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-semibold text-slate-700">Adaptability</span>
-                                <span class="text-xs font-bold text-teal-600">85%</span>
+                                <span class="text-sm font-semibold text-slate-300">Problem Solving</span>
+                                <span class="text-xs font-bold text-purple-400">90%</span>
                             </div>
-                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-gradient-to-r from-teal-400 to-teal-500 h-2.5 rounded-full transition-all duration-1000 ease-out delay-300 w-0 skill-bar" data-width="85%"></div>
+                            <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-gradient-to-r from-purple-600 to-purple-400 h-2.5 rounded-full transition-all duration-1000 ease-out delay-200 w-0 skill-bar" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm font-semibold text-slate-300">Adaptability</span>
+                                <span class="text-xs font-bold text-purple-400">85%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-gradient-to-r from-purple-600 to-purple-400 h-2.5 rounded-full transition-all duration-1000 ease-out delay-300 w-0 skill-bar" data-width="85%"></div>
                             </div>
                         </div>
                     </div>
@@ -279,33 +291,33 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-24 px-6 bg-gradient-to-b from-white to-cyan-50/50">
+    <section id="projects" class="py-24 px-6 bg-slate-900/50 border-t border-white/5 relative">
         <div class="max-w-6xl mx-auto scroll-reveal">
             <div class="flex justify-between items-end mb-16">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-800">ผลงาน</h2>
-                    <p class="text-slate-600 max-w-2xl">โปรเจกต์ที่ผมภูมิใจนำเสนอ ซึ่งได้ประยุกต์ใช้ความรู้เพื่อแก้ปัญหาจริง</p>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">ผลงาน</h2>
+                    <p class="text-slate-400 max-w-2xl">โปรเจกต์ที่ผมภูมิใจนำเสนอ ผสมผสานเทคโนโลยีและการออกแบบ</p>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Project 1 -->
-                <div class="group rounded-3xl overflow-hidden bg-white border border-cyan-100 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(6,182,212,0.15)] hover:border-cyan-300">
-                    <div class="h-64 bg-slate-50 relative overflow-hidden cursor-pointer" onclick="openLightbox('https://i.postimg.cc/63B0HXDr/Fancy.png')">
-                        <img src="https://i.postimg.cc/63B0HXDr/Fancy.png" alt="รูปผลงาน Project 1" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div class="group rounded-3xl overflow-hidden bg-slate-900 border border-white/10 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(217,70,239,0.15)] hover:border-fuchsia-500/50">
+                    <div class="h-64 bg-slate-800 relative overflow-hidden cursor-pointer" onclick="openLightbox('https://i.postimg.cc/63B0HXDr/Fancy.png')">
+                        <img src="https://i.postimg.cc/63B0HXDr/Fancy.png" alt="รูปผลงาน Project 1" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3 text-slate-800 group-hover:text-cyan-600 transition-colors">ออกแบบโปสเตอร์ปาร์ตี้ (Fancy)</h3>
-                        <p class="text-slate-600 mb-6 line-clamp-2">
+                        <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-fuchsia-400 transition-colors">ออกแบบโปสเตอร์ปาร์ตี้ (Fancy)</h3>
+                        <p class="text-slate-400 mb-6 line-clamp-2">
                             ผลงานการออกแบบโปสเตอร์โปรโมทงานอีเวนต์/ปาร์ตี้ เน้นการใช้สีสัน แสงเงา และการจัดวางองค์ประกอบให้ดึงดูดสายตา
                         </p>
                         <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">Adobe Photoshop</span>
-                            <span class="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">Adobe Illustrator</span>
-                            <span class="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">Canva</span>
+                            <span class="px-3 py-1 bg-fuchsia-500/10 border border-fuchsia-500/20 text-fuchsia-300 rounded-lg text-xs font-semibold">Adobe Photoshop</span>
+                            <span class="px-3 py-1 bg-fuchsia-500/10 border border-fuchsia-500/20 text-fuchsia-300 rounded-lg text-xs font-semibold">Adobe Illustrator</span>
+                            <span class="px-3 py-1 bg-fuchsia-500/10 border border-fuchsia-500/20 text-fuchsia-300 rounded-lg text-xs font-semibold">Canva</span>
                         </div>
                         <div class="flex gap-4">
-                            <button onclick="openLightbox('https://i.postimg.cc/63B0HXDr/Fancy.png')" class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-cyan-600 transition-colors">
+                            <button onclick="openLightbox('https://i.postimg.cc/63B0HXDr/Fancy.png')" class="flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-fuchsia-400 transition-colors">
                                 <i data-feather="external-link" class="w-4 h-4"></i> ดูผลงานเต็ม
                             </button>
                         </div>
@@ -313,21 +325,21 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="group rounded-3xl overflow-hidden bg-white border border-sky-100 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(14,165,233,0.15)] hover:border-sky-300">
-                    <div class="h-64 bg-slate-50 relative overflow-hidden cursor-pointer" onclick="openLightbox('https://i.postimg.cc/pdWh4LLt/lxy-krathng.jpg')">
-                        <img src="https://i.postimg.cc/pdWh4LLt/lxy-krathng.jpg" alt="รูปผลงาน Project 2" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div class="group rounded-3xl overflow-hidden bg-slate-900 border border-white/10 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(6,182,212,0.15)] hover:border-cyan-500/50">
+                    <div class="h-64 bg-slate-800 relative overflow-hidden cursor-pointer" onclick="openLightbox('https://i.postimg.cc/pdWh4LLt/lxy-krathng.jpg')">
+                        <img src="https://i.postimg.cc/pdWh4LLt/lxy-krathng.jpg" alt="รูปผลงาน Project 2" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3 text-slate-800 group-hover:text-cyan-600 transition-colors">ออกแบบโปสเตอร์วันลอยกระทง</h3>
-                        <p class="text-slate-600 mb-6 line-clamp-2">
+                        <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-cyan-400 transition-colors">ออกแบบโปสเตอร์วันลอยกระทง</h3>
+                        <p class="text-slate-400 mb-6 line-clamp-2">
                             ผลงานการออกแบบสื่อประชาสัมพันธ์เทศกาลวันลอยกระทง เน้นการสื่อสารจุดประสงค์ของงานและสะท้อนความเป็นไทยอย่างสวยงาม
                         </p>
                         <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">Adobe Photoshop</span>
-                            <span class="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">Figma</span>
+                            <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 rounded-lg text-xs font-semibold">Adobe Photoshop</span>
+                            <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 rounded-lg text-xs font-semibold">Figma</span>
                         </div>
                         <div class="flex gap-4">
-                            <button onclick="openLightbox('https://i.postimg.cc/pdWh4LLt/lxy-krathng.jpg')" class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-cyan-600 transition-colors">
+                            <button onclick="openLightbox('https://i.postimg.cc/pdWh4LLt/lxy-krathng.jpg')" class="flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-cyan-400 transition-colors">
                                 <i data-feather="external-link" class="w-4 h-4"></i> ดูผลงานเต็ม
                             </button>
                         </div>
@@ -335,39 +347,38 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="group rounded-3xl overflow-hidden bg-white border border-sky-100 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(14,165,233,0.15)] hover:border-sky-300">
-                    <div class="h-64 bg-slate-50 relative overflow-hidden cursor-pointer" onclick="openLightbox('https://i.postimg.cc/T32MLKd0/n-ks-ks\'a-sa-khaw-cha-thekh-no-loy-sarsnthes-laea-nw-tkr-rmd-c-th-lr-wmc-dk-ckr-rm-khae-ngkem-FIFA-khays-nkh-a-tlad-OPOP.jpg')">
-                        <img src="https://i.postimg.cc/T32MLKd0/n-ks-ks'a-sa-khaw-cha-thekh-no-loy-sarsnthes-laea-nw-tkr-rmd-c-th-lr-wmc-dk-ckr-rm-khae-ngkem-FIFA-khays-nkh-a-tlad-OPOP.jpg" alt="รูปผลงาน Project 3" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div class="group rounded-3xl overflow-hidden bg-slate-900 border border-white/10 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(168,85,247,0.15)] hover:border-purple-500/50">
+                    <div class="h-64 bg-slate-800 relative overflow-hidden cursor-pointer" onclick="openLightbox('https://i.postimg.cc/T32MLKd0/n-ks-ks\'a-sa-khaw-cha-thekh-no-loy-sarsnthes-laea-nw-tkr-rmd-c-th-lr-wmc-dk-ckr-rm-khae-ngkem-FIFA-khays-nkh-a-tlad-OPOP.jpg')">
+                        <img src="https://i.postimg.cc/T32MLKd0/n-ks-ks'a-sa-khaw-cha-thekh-no-loy-sarsnthes-laea-nw-tkr-rmd-c-th-lr-wmc-dk-ckr-rm-khae-ngkem-FIFA-khays-nkh-a-tlad-OPOP.jpg" alt="รูปผลงาน Project 3" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3 text-slate-800 group-hover:text-cyan-600 transition-colors">ทำกิจกรรมจัดแข่ง FIFA และ RoV</h3>
-                        <p class="text-slate-600 mb-4 line-clamp-2">
-                            ผลงานการจัดกิจกรรมแข่งขัน E-Sports เกม FIFA และ RoV โดยมีส่วนร่วมในการจัดการแข่งขัน ดูแลภาพรวม และประสานงานต่างๆ ภายในงาน
+                        <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-purple-400 transition-colors">ทำกิจกรรมจัดแข่ง FIFA และ RoV</h3>
+                        <p class="text-slate-400 mb-4 line-clamp-2">
+                            ผลงานการจัดกิจกรรมแข่งขัน E-Sports เกม FIFA และ RoV โดยมีส่วนร่วมในการจัดการแข่งขัน ดูแลภาพรวม และประสานงานด้านระบบ IT ภายในงาน
                         </p>
                         
                         <!-- Mini Gallery -->
                         <div class="flex flex-wrap gap-3 mb-6">
-                            <div class="w-16 h-16 rounded-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-cyan-400 transition-all shadow-sm" onclick="openLightbox('https://i.postimg.cc/T32MLKd0/n-ks-ks\'a-sa-khaw-cha-thekh-no-loy-sarsnthes-laea-nw-tkr-rmd-c-th-lr-wmc-dk-ckr-rm-khae-ngkem-FIFA-khays-nkh-a-tlad-OPOP.jpg')" title="ดูรูปภาพที่ 1">
-                                <img src="https://i.postimg.cc/T32MLKd0/n-ks-ks'a-sa-khaw-cha-thekh-no-loy-sarsnthes-laea-nw-tkr-rmd-c-th-lr-wmc-dk-ckr-rm-khae-ngkem-FIFA-khays-nkh-a-tlad-OPOP.jpg" class="w-full h-full object-cover" alt="Gallery 1" />
+                            <div class="w-16 h-16 rounded-xl overflow-hidden cursor-pointer border border-white/20 hover:border-purple-400 transition-all shadow-sm" onclick="openLightbox('https://i.postimg.cc/T32MLKd0/n-ks-ks\'a-sa-khaw-cha-thekh-no-loy-sarsnthes-laea-nw-tkr-rmd-c-th-lr-wmc-dk-ckr-rm-khae-ngkem-FIFA-khays-nkh-a-tlad-OPOP.jpg')" title="ดูรูปภาพที่ 1">
+                                <img src="https://i.postimg.cc/T32MLKd0/n-ks-ks'a-sa-khaw-cha-thekh-no-loy-sarsnthes-laea-nw-tkr-rmd-c-th-lr-wmc-dk-ckr-rm-khae-ngkem-FIFA-khays-nkh-a-tlad-OPOP.jpg" class="w-full h-full object-cover opacity-80 hover:opacity-100" alt="Gallery 1" />
                             </div>
-                            <div class="w-16 h-16 rounded-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-cyan-400 transition-all shadow-sm" onclick="openLightbox('https://i.postimg.cc/dVQPkhsj/phaph-brryakas-kar-khae-ngkh-n-ROV-SCIFEST-2024-c-dkh-nrahw-angw-nth-31-k-kh-1-s-kh-2567.jpg')" title="ดูรูปบรรยากาศงาน RoV">
-                                <img src="https://i.postimg.cc/dVQPkhsj/phaph-brryakas-kar-khae-ngkh-n-ROV-SCIFEST-2024-c-dkh-nrahw-angw-nth-31-k-kh-1-s-kh-2567.jpg" class="w-full h-full object-cover" alt="Gallery 2" />
+                            <div class="w-16 h-16 rounded-xl overflow-hidden cursor-pointer border border-white/20 hover:border-purple-400 transition-all shadow-sm" onclick="openLightbox('https://i.postimg.cc/dVQPkhsj/phaph-brryakas-kar-khae-ngkh-n-ROV-SCIFEST-2024-c-dkh-nrahw-angw-nth-31-k-kh-1-s-kh-2567.jpg')" title="ดูรูปบรรยากาศงาน RoV">
+                                <img src="https://i.postimg.cc/dVQPkhsj/phaph-brryakas-kar-khae-ngkh-n-ROV-SCIFEST-2024-c-dkh-nrahw-angw-nth-31-k-kh-1-s-kh-2567.jpg" class="w-full h-full object-cover opacity-80 hover:opacity-100" alt="Gallery 2" />
                             </div>
-                            <div class="w-16 h-16 rounded-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-cyan-400 transition-all shadow-sm" onclick="openLightbox('https://i.postimg.cc/T32MLKdc/ekhe-ngrov.jpg')" title="ดูรูปบรรยากาศงานแข่ง RoV">
-                                <img src="https://i.postimg.cc/T32MLKdc/ekhe-ngrov.jpg" class="w-full h-full object-cover" alt="Gallery 3" />
+                            <div class="w-16 h-16 rounded-xl overflow-hidden cursor-pointer border border-white/20 hover:border-purple-400 transition-all shadow-sm" onclick="openLightbox('https://i.postimg.cc/T32MLKdc/ekhe-ngrov.jpg')" title="ดูรูปบรรยากาศงานแข่ง RoV">
+                                <img src="https://i.postimg.cc/T32MLKdc/ekhe-ngrov.jpg" class="w-full h-full object-cover opacity-80 hover:opacity-100" alt="Gallery 3" />
                             </div>
-                            <div class="w-16 h-16 rounded-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-cyan-400 transition-all shadow-sm" onclick="openLightbox('https://i.postimg.cc/0y5RMzkY/ekhe-ngrov2.jpg')" title="ดูรูปบรรยากาศงานแข่ง RoV เพิ่มเติม">
-                                <img src="https://i.postimg.cc/0y5RMzkY/ekhe-ngrov2.jpg" class="w-full h-full object-cover" alt="Gallery 4" />
+                            <div class="w-16 h-16 rounded-xl overflow-hidden cursor-pointer border border-white/20 hover:border-purple-400 transition-all shadow-sm" onclick="openLightbox('https://i.postimg.cc/0y5RMzkY/ekhe-ngrov2.jpg')" title="ดูรูปบรรยากาศงานแข่ง RoV เพิ่มเติม">
+                                <img src="https://i.postimg.cc/0y5RMzkY/ekhe-ngrov2.jpg" class="w-full h-full object-cover opacity-80 hover:opacity-100" alt="Gallery 4" />
                             </div>
                         </div>
 
                         <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">Event Organizer</span>
-                            <span class="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">E-Sports</span>
-                            <span class="px-3 py-1 bg-cyan-50 border border-cyan-100 text-cyan-700 rounded-lg text-xs font-semibold">Management</span>
+                            <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 text-purple-300 rounded-lg text-xs font-semibold">Event Organizer</span>
+                            <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 text-purple-300 rounded-lg text-xs font-semibold">E-Sports</span>
                         </div>
                         <div class="flex gap-4">
-                            <button onclick="openLightbox('https://i.postimg.cc/dVQPkhsj/phaph-brryakas-kar-khae-ngkh-n-ROV-SCIFEST-2024-c-dkh-nrahw-angw-nth-31-k-kh-1-s-kh-2567.jpg')" class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-cyan-600 transition-colors">
+                            <button onclick="openLightbox('https://i.postimg.cc/dVQPkhsj/phaph-brryakas-kar-khae-ngkh-n-ROV-SCIFEST-2024-c-dkh-nrahw-angw-nth-31-k-kh-1-s-kh-2567.jpg')" class="flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-purple-400 transition-colors">
                                 <i data-feather="external-link" class="w-4 h-4"></i> ดูรูปภาพเพิ่มเติม
                             </button>
                         </div>
@@ -375,21 +386,22 @@
                 </div>
 
                 <!-- Project 4 -->
-                <div class="group rounded-3xl overflow-hidden bg-white border border-sky-100 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(14,165,233,0.15)] hover:border-sky-300">
-                    <div class="h-64 bg-slate-50 relative overflow-hidden cursor-pointer" onclick="openLightbox('https://i.postimg.cc/DzWk2R6q/Screenshot-2026-03-09-150904.png')">
-                        <img src="https://i.postimg.cc/DzWk2R6q/Screenshot-2026-03-09-150904.png" alt="รูปผลงาน Graphic & UI Design" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div class="group rounded-3xl overflow-hidden bg-slate-900 border border-white/10 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(6,182,212,0.15)] hover:border-cyan-500/50">
+                    <div class="h-64 bg-slate-800 relative overflow-hidden cursor-pointer" onclick="openLightbox('https://i.postimg.cc/DzWk2R6q/Screenshot-2026-03-09-150904.png')">
+                        <img src="https://i.postimg.cc/DzWk2R6q/Screenshot-2026-03-09-150904.png" alt="รูปผลงาน Graphic & UI Design" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100 object-top" />
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3 text-slate-800 group-hover:text-sky-600 transition-colors">ออกแบบ UI/UX (หน้า Contact)</h3>
-                        <p class="text-slate-600 mb-6 line-clamp-2">
-                            ผลงานการออกแบบ User Interface สำหรับหน้าช่องทางการติดต่อในสไตล์ Dark Mode เน้นความสวยงาม ทันสมัย และตอบโจทย์ผู้ใช้งาน
+                        <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-cyan-400 transition-colors">ออกแบบ UI/UX (หน้า Contact)</h3>
+                        <p class="text-slate-400 mb-6 line-clamp-2">
+                            ผลงานการออกแบบ User Interface สำหรับหน้าช่องทางการติดต่อในสไตล์ Dark Mode เน้นความสวยงาม ทันสมัย แบบฉบับชาวไอที
                         </p>
                         <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="px-3 py-1 bg-sky-50 border border-sky-100 text-sky-700 rounded-lg text-xs font-semibold">Figma</span>
-                            <span class="px-3 py-1 bg-sky-50 border border-sky-100 text-sky-700 rounded-lg text-xs font-semibold">Adobe Photoshop</span>
+                            <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 rounded-lg text-xs font-semibold">UI/UX</span>
+                            <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 rounded-lg text-xs font-semibold">Figma</span>
+                            <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 rounded-lg text-xs font-semibold">Tech Design</span>
                         </div>
                         <div class="flex gap-4">
-                            <button onclick="openLightbox('https://i.postimg.cc/DzWk2R6q/Screenshot-2026-03-09-150904.png')" class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-sky-600 transition-colors">
+                            <button onclick="openLightbox('https://i.postimg.cc/DzWk2R6q/Screenshot-2026-03-09-150904.png')" class="flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-cyan-400 transition-colors">
                                 <i data-feather="external-link" class="w-4 h-4"></i> ดูผลงานเต็ม
                             </button>
                         </div>
@@ -397,22 +409,22 @@
                 </div>
 
                 <!-- Project 5: YouTube Video -->
-                <div class="group rounded-3xl overflow-hidden bg-white border border-indigo-100 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(99,102,241,0.15)] hover:border-indigo-300 md:col-span-2 lg:col-span-1">
-                    <div class="h-64 bg-slate-900 relative overflow-hidden">
+                <div class="group rounded-3xl overflow-hidden bg-slate-900 border border-white/10 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(217,70,239,0.15)] hover:border-fuchsia-500/50 md:col-span-2 lg:col-span-1">
+                    <div class="h-64 bg-slate-950 relative overflow-hidden">
                         <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/oNMtRT_6ykU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3 text-slate-800 group-hover:text-indigo-600 transition-colors">ผลงานวิดีโอ / ตัดต่อ (Video Production)</h3>
-                        <p class="text-slate-600 mb-6 line-clamp-2">
+                        <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-fuchsia-400 transition-colors">ผลงานวิดีโอ / ตัดต่อ (Video Production)</h3>
+                        <p class="text-slate-400 mb-6 line-clamp-2">
                             ผลงานการตัดต่อและสร้างสรรค์วิดีโอ นำเสนอเรื่องราวผ่านภาพเคลื่อนไหวและเสียงประกอบ เพื่อใช้ในการสื่อสารและโปรโมท
                         </p>
                         <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="px-3 py-1 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded-lg text-xs font-semibold">Video Editing</span>
-                            <span class="px-3 py-1 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded-lg text-xs font-semibold">Content Creator</span>
-                            <span class="px-3 py-1 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded-lg text-xs font-semibold">YouTube</span>
+                            <span class="px-3 py-1 bg-fuchsia-500/10 border border-fuchsia-500/20 text-fuchsia-300 rounded-lg text-xs font-semibold">Video Editing</span>
+                            <span class="px-3 py-1 bg-fuchsia-500/10 border border-fuchsia-500/20 text-fuchsia-300 rounded-lg text-xs font-semibold">Content Creator</span>
+                            <span class="px-3 py-1 bg-fuchsia-500/10 border border-fuchsia-500/20 text-fuchsia-300 rounded-lg text-xs font-semibold">Media Production</span>
                         </div>
                         <div class="flex gap-4">
-                            <a href="https://www.youtube.com/watch?v=oNMtRT_6ykU" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">
+                            <a href="https://www.youtube.com/watch?v=oNMtRT_6ykU" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-fuchsia-400 transition-colors">
                                 <i data-feather="external-link" class="w-4 h-4"></i> เปิดดูบน YouTube
                             </a>
                         </div>
@@ -424,68 +436,68 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6 bg-gradient-to-b from-cyan-50/50 to-sky-100 text-slate-800 flex justify-center items-center relative overflow-hidden">
-        <div class="max-w-5xl w-full bg-white/80 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-16 shadow-[0_20px_60px_rgba(6,182,212,0.15)] relative border border-white scroll-reveal">
+    <section id="contact" class="py-24 px-6 bg-slate-950 text-white flex justify-center items-center relative overflow-hidden border-t border-white/5">
+        <div class="max-w-5xl w-full bg-slate-900/80 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-16 shadow-[0_0_50px_rgba(6,182,212,0.1)] relative border border-white/10 scroll-reveal">
             <!-- Decorative elements -->
-            <div class="absolute top-[20%] left-[10%] w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_15px_3px_rgba(34,211,238,0.4)]"></div>
-            <div class="absolute top-[40%] right-[15%] w-16 h-16 rounded-full border-[2px] border-sky-300/30"></div>
-            <div class="absolute bottom-[20%] left-[30%] w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-200 to-sky-200 opacity-50 blur-sm"></div>
+            <div class="absolute top-[20%] left-[10%] w-3 h-3 rounded-full bg-fuchsia-400 shadow-[0_0_15px_3px_rgba(217,70,239,0.4)]"></div>
+            <div class="absolute top-[40%] right-[15%] w-16 h-16 rounded-full border-[2px] border-cyan-400/20"></div>
+            <div class="absolute bottom-[20%] left-[30%] w-8 h-8 rounded-full bg-gradient-to-tr from-fuchsia-500 to-cyan-500 opacity-40 blur-md"></div>
             
             <div class="flex flex-col items-center mb-12 relative z-10">
-                <div class="w-16 h-16 bg-gradient-to-br from-cyan-100 to-sky-100 rounded-full flex items-center justify-center mb-6 shadow-inner border border-white">
-                    <i data-feather="message-square" class="text-cyan-600 w-7 h-7"></i>
+                <div class="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mb-6 shadow-inner border border-white/5">
+                    <i data-feather="message-square" class="text-cyan-400 w-7 h-7"></i>
                 </div>
-                <h2 class="text-4xl md:text-5xl font-black mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-sky-600 tracking-wide">ช่องทางการติดต่อ</h2>
-                <p class="text-slate-500 font-medium">ยินดีที่ได้รู้จักครับ สามารถติดต่อผมได้ตามช่องทางด้านล่างเลย</p>
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-white tracking-wide drop-shadow-sm">ช่องทางการติดต่อ</h2>
+                <p class="text-slate-400 font-medium">ยินดีที่ได้รู้จักครับ สามารถติดต่อผมได้ตามช่องทางด้านล่างเลย</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 relative z-10">
                 <!-- Email -->
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=narongchaipm2004@gmail.com" target="_blank" rel="noopener noreferrer" class="bg-white border-2 border-slate-200 shadow-sm rounded-3xl p-8 flex flex-col items-center hover:bg-cyan-50 hover:border-cyan-400 transition-all hover:shadow-lg group cursor-pointer">
-                    <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-cyan-500 transition-all duration-300">
-                        <i data-feather="mail" class="text-cyan-500 group-hover:text-white transition-colors w-7 h-7"></i>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=narongchaipm2004@gmail.com" target="_blank" rel="noopener noreferrer" class="bg-slate-800/80 border border-white/10 shadow-lg rounded-3xl p-8 flex flex-col items-center hover:bg-slate-800 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.2)] transition-all group cursor-pointer">
+                    <div class="w-16 h-16 bg-slate-900 shadow-inner rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-cyan-500 transition-all duration-300 border border-white/5">
+                        <i data-feather="mail" class="text-cyan-400 group-hover:text-white transition-colors w-7 h-7"></i>
                     </div>
-                    <p class="text-xs text-cyan-600 font-black tracking-widest mb-3 uppercase">Email</p>
-                    <p class="text-slate-700 font-bold text-sm md:text-base">narongchaipm2004@gmail.com</p>
+                    <p class="text-xs text-cyan-400 font-black tracking-widest mb-3 uppercase">Email</p>
+                    <p class="text-white font-bold text-sm md:text-base">narongchaipm2004@gmail.com</p>
                 </a>
 
                 <!-- Phone -->
-                <a href="tel:0625377142" class="bg-white border-2 border-slate-200 shadow-sm rounded-3xl p-8 flex flex-col items-center hover:bg-sky-50 hover:border-sky-400 transition-all hover:shadow-lg group cursor-pointer">
-                    <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-sky-500 transition-all duration-300">
-                        <i data-feather="phone" class="text-sky-500 group-hover:text-white transition-colors w-7 h-7"></i>
+                <a href="tel:0625377142" class="bg-slate-800/80 border border-white/10 shadow-lg rounded-3xl p-8 flex flex-col items-center hover:bg-slate-800 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.2)] transition-all group cursor-pointer">
+                    <div class="w-16 h-16 bg-slate-900 shadow-inner rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-cyan-500 transition-all duration-300 border border-white/5">
+                        <i data-feather="phone" class="text-cyan-400 group-hover:text-white transition-colors w-7 h-7"></i>
                     </div>
-                    <p class="text-xs text-sky-600 font-black tracking-widest mb-3 uppercase">Phone</p>
-                    <p class="text-slate-700 font-bold text-sm md:text-base">062-537-7142</p>
+                    <p class="text-xs text-cyan-400 font-black tracking-widest mb-3 uppercase">Phone</p>
+                    <p class="text-white font-bold text-sm md:text-base">062-537-7142</p>
                 </a>
 
                 <!-- Line ID -->
-                <a href="https://line.me/ti/p/~narongchai310547" target="_blank" rel="noopener noreferrer" class="bg-white border-2 border-slate-200 shadow-sm rounded-3xl p-8 flex flex-col items-center hover:bg-teal-50 hover:border-teal-400 transition-all hover:shadow-lg group cursor-pointer">
-                    <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-teal-500 transition-all duration-300">
-                        <i data-feather="message-circle" class="text-teal-500 group-hover:text-white transition-colors w-7 h-7"></i>
+                <a href="https://line.me/ti/p/~narongchai310547" target="_blank" rel="noopener noreferrer" class="bg-slate-800/80 border border-white/10 shadow-lg rounded-3xl p-8 flex flex-col items-center hover:bg-slate-800 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.2)] transition-all group cursor-pointer">
+                    <div class="w-16 h-16 bg-slate-900 shadow-inner rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-cyan-500 transition-all duration-300 border border-white/5">
+                        <i data-feather="message-circle" class="text-cyan-400 group-hover:text-white transition-colors w-7 h-7"></i>
                     </div>
-                    <p class="text-xs text-teal-600 font-black tracking-widest mb-3 uppercase">Line ID</p>
-                    <p class="text-slate-700 font-bold text-sm md:text-base">narongchai310547</p>
+                    <p class="text-xs text-cyan-400 font-black tracking-widest mb-3 uppercase">Line ID</p>
+                    <p class="text-white font-bold text-sm md:text-base">narongchai310547</p>
                 </a>
             </div>
 
-            <div class="border-t border-slate-200 pt-8 relative z-10">
-                <div class="flex items-center gap-4 text-slate-600 justify-center md:justify-start md:ml-6 bg-slate-50/50 py-3 px-6 rounded-full w-fit mx-auto md:mx-0 border border-slate-100">
-                    <i data-feather="map-pin" class="text-cyan-500 w-5 h-5"></i>
+            <div class="border-t border-white/10 pt-8 relative z-10">
+                <div class="flex items-center gap-4 text-slate-300 justify-center md:justify-start md:ml-6 bg-slate-900 py-3 px-6 rounded-full w-fit mx-auto md:mx-0 border border-white/5">
+                    <i data-feather="map-pin" class="text-cyan-400 w-5 h-5"></i>
                     <span class="text-sm font-semibold">22 ม.6 ต.บางกุ้ง อ.ห้วยยอด จ.ตรัง 92210</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-8 text-center text-slate-500 text-sm bg-sky-100/50">
+    <footer class="py-8 text-center text-slate-500 text-sm bg-slate-950 border-t border-white/5">
         <p id="copyright-year"></p>
     </footer>
 
     <!-- Image Modal (Lightbox) -->
-    <div id="lightbox-modal" class="hidden fixed inset-0 z-[100] flex-col items-center justify-center bg-slate-900/80 p-4 md:p-10 backdrop-blur-md transition-opacity duration-300 opacity-0" onclick="closeLightbox()">
+    <div id="lightbox-modal" class="hidden fixed inset-0 z-[100] flex-col items-center justify-center bg-slate-950/90 p-4 md:p-10 backdrop-blur-md transition-opacity duration-300 opacity-0" onclick="closeLightbox()">
         <div class="relative flex justify-center w-full max-w-5xl transition-transform duration-300 scale-95" id="lightbox-content">
-            <img id="lightbox-img" src="" alt="ภาพผลงานขนาดเต็ม" class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10" onclick="event.stopPropagation()" />
-            <button class="absolute -top-12 right-0 md:-right-12 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-2 rounded-full transition-all" onclick="closeLightbox()">
+            <img id="lightbox-img" src="" alt="ภาพผลงานขนาดเต็ม" class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-[0_0_50px_rgba(217,70,239,0.3)] border border-white/10" onclick="event.stopPropagation()" />
+            <button class="absolute -top-12 right-0 md:-right-12 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 p-2 rounded-full transition-all border border-white/10" onclick="closeLightbox()">
                 <i data-feather="x" class="w-7 h-7"></i>
             </button>
         </div>
@@ -515,10 +527,10 @@
         window.addEventListener('scroll', () => {
             // Navbar Style
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-white/80', 'backdrop-blur-md', 'border-b', 'border-cyan-100', 'py-3', 'shadow-sm');
+                navbar.classList.add('bg-slate-900/90', 'backdrop-blur-md', 'border-b', 'border-slate-800', 'py-3', 'shadow-lg');
                 navbar.classList.remove('bg-transparent', 'py-5');
             } else {
-                navbar.classList.remove('bg-white/80', 'backdrop-blur-md', 'border-b', 'border-cyan-100', 'py-3', 'shadow-sm');
+                navbar.classList.remove('bg-slate-900/90', 'backdrop-blur-md', 'border-b', 'border-slate-800', 'py-3', 'shadow-lg');
                 navbar.classList.add('bg-transparent', 'py-5');
             }
 
@@ -536,17 +548,17 @@
 
             navBtns.forEach(btn => {
                 if (btn.dataset.target === current) {
-                    btn.classList.add('text-cyan-600');
-                    btn.classList.remove('text-slate-500');
+                    btn.classList.add('text-fuchsia-400');
+                    btn.classList.remove('text-slate-400', 'text-cyan-400');
                 } else {
-                    btn.classList.remove('text-cyan-600');
-                    btn.classList.add('text-slate-500');
+                    btn.classList.remove('text-fuchsia-400', 'text-cyan-400');
+                    btn.classList.add('text-slate-400');
                 }
             });
         });
 
         // Typing Effect
-        const roles = ['AI Engineer', 'Data Science', 'Graphic Design', 'UI/UX Design'];
+        const roles = ['Graphic Design', 'AI Engineer', 'Content Creator'];
         let loopNum = 0;
         let isDeleting = false;
         let text = '';
@@ -608,7 +620,6 @@
             modalImg.src = src;
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            // Small delay to allow CSS display:flex to apply before animating opacity
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
                 modalContent.classList.remove('scale-95');
@@ -624,7 +635,7 @@
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
                 modalImg.src = '';
-            }, 300); // match transition duration
+            }, 300);
         }
     </script>
 </body>

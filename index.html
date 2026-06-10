@@ -28,7 +28,7 @@
         
         @keyframes blink { 50% { border-color: transparent; } }
         .typing-cursor { 
-            border-right: 3px solid #06b6d4; /* cyan-500 */
+            border-right: 3px solid #22d3ee; /* cyan-400 */
             padding-right: 4px; 
             animation: blink 0.75s step-end infinite; 
         }
@@ -58,14 +58,13 @@
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-300 selection:bg-fuchsia-500/30 selection:text-fuchsia-200">
+<body class="bg-slate-950 text-slate-300 selection:bg-cyan-500/30 selection:text-cyan-200">
 
     <!-- Navbar -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-5">
         <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
             <div class="cursor-pointer" onclick="scrollToSection('home')">
-                <!-- โลโก้อาจจะมืดไปนิดบนพื้นดำ แต่ถ้าเป็นไฟล์ PNG โปร่งใสที่มีสีสันจะดูดีมาก -->
-                <img src="https://i.postimg.cc/FRqMdpW5/LRu-Q.png" alt="โลโก้ใหม่" class="h-14 md:h-16 w-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] hover:scale-105 transition-transform duration-300" />
+                <img src="https://i.postimg.cc/FRqMdpW5/LRu-Q.png" alt="โลโก้" class="h-14 md:h-16 w-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] hover:scale-105 transition-transform duration-300" />
             </div>
             <div class="hidden md:flex space-x-8">
                 <button onclick="scrollToSection('home')" class="nav-btn text-base font-bold transition-colors hover:text-cyan-400 text-cyan-400" data-target="home">Home</button>
@@ -122,7 +121,7 @@
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">เกี่ยวกับผม</h2>
                 <p class="text-slate-400 text-lg leading-relaxed max-w-3xl mx-auto">
-                    ผมเป็นนักศึกษาจากมหาวิทยาลัยราชภัฏสงขลา ที่มีความสนใจและมุ่งมั่นในสายงาน  <strong class="text-cyan-400">การออกแบบกราฟิก (Graphic Design)</strong> และ <strong class="text-cyan-400">ปัญญาประดิษฐ์ (AI)</strong> ผมชอบการแก้ไขปัญหาและช่วยเหลือผู้ใช้งาน (Troubleshooting) ผสมผสานกับความชื่นชอบในงานสร้างสรรค์และเทคโนโลยีใหม่ๆ ปัจจุบันกำลังมองหาโอกาสฝึกงานเพื่อนำความรู้มาประยุกต์ใช้และพัฒนาทักษะในสภาพแวดล้อมการทำงานจริง
+                    ผมเป็นนักศึกษาจากมหาวิทยาลัยราชภัฏสงขลา ที่มีความสนใจและมุ่งมั่นในสายงาน <strong class="text-cyan-400">การออกแบบกราฟิก (Graphic Design)</strong> และ <strong class="text-cyan-400">ปัญญาประดิษฐ์ (AI)</strong> ผมชอบผสมผสานความคิดสร้างสรรค์เข้ากับเทคโนโลยีใหม่ๆ ปัจจุบันกำลังมองหาโอกาสฝึกงานเพื่อนำความรู้มาประยุกต์ใช้และพัฒนาทักษะในสภาพแวดล้อมการทำงานจริง
                 </p>
             </div>
             
@@ -172,7 +171,7 @@
         <div id="skills-content" class="max-w-5xl mx-auto scroll-reveal relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4 text-white">ทักษะความสามารถ</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">ความเชี่ยวชาญทางด้านไอทีและการออกแบบ เพื่อการทำงานที่ครอบคลุม</p>
+                <p class="text-slate-400 max-w-2xl mx-auto">ความเชี่ยวชาญทางด้านเทคโนโลยีและการออกแบบ เพื่อการทำงานที่ครอบคลุม</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -354,7 +353,7 @@
                     <div class="p-8">
                         <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-purple-400 transition-colors">ทำกิจกรรมจัดแข่ง FIFA และ RoV</h3>
                         <p class="text-slate-400 mb-4 line-clamp-2">
-                            ผลงานการจัดกิจกรรมแข่งขัน E-Sports เกม FIFA และ RoV โดยมีส่วนร่วมในการจัดการแข่งขัน ดูแลภาพรวม และประสานงานด้านระบบ IT ภายในงาน
+                            ผลงานการจัดกิจกรรมแข่งขัน E-Sports เกม FIFA และ RoV โดยมีส่วนร่วมในการจัดการแข่งขัน ดูแลภาพรวม และประสานงานด้านระบบภายในงาน
                         </p>
                         
                         <!-- Mini Gallery -->
@@ -431,6 +430,38 @@
                     </div>
                 </div>
 
+                <!-- Project 6: Banner & Poster Design -->
+                <div class="group rounded-3xl overflow-hidden bg-slate-900 border border-white/10 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(6,182,212,0.15)] hover:border-cyan-500/50 md:col-span-2 lg:col-span-1">
+                    <div class="h-64 bg-slate-800 relative overflow-hidden cursor-pointer" onclick="openLightbox('https://cdn.phototourl.com/free/2026-06-10-a52995c3-f9b8-40f9-9c03-258b67289e45.png')">
+                        <img src="https://cdn.phototourl.com/free/2026-06-10-a52995c3-f9b8-40f9-9c03-258b67289e45.png" alt="รูปผลงานออกแบบ Banner SyncSpace AI" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100 object-top" />
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-cyan-400 transition-colors">ออกแบบ banner เเละโปสเตอร์</h3>
+                        <p class="text-slate-400 mb-6 line-clamp-2">
+                            ผลงานการออกแบบแบนเนอร์และโปสเตอร์เพื่อการประชาสัมพันธ์ เน้นการจัดวางองค์ประกอบภาพ (Composition) และการใช้สีที่ดึงดูดสายตากลุ่มเป้าหมาย
+                        </p>
+                        
+                        <!-- ซ่อนรูปภาพอื่นๆ ไว้ในโค้ดเพื่อให้ระบบแกลเลอรีสแกนเจอ -->
+                        <div class="hidden">
+                            <button onclick="openLightbox('https://cdn.phototourl.com/free/2026-06-10-a52995c3-f9b8-40f9-9c03-258b67289e45.png')"></button>
+                            <button onclick="openLightbox('https://cdn.phototourl.com/free/2026-06-10-ad69f045-c5aa-4b40-9e0f-08ef619a73bb.png')"></button>
+                            <button onclick="openLightbox('https://cdn.phototourl.com/free/2026-06-10-e6d241c3-cf38-42b7-bfd2-48f5c89767b6.png')"></button>
+                            <button onclick="openLightbox('https://cdn.phototourl.com/free/2026-06-10-cd0879a9-c248-4e5d-8c79-c3283c0f2335.png')"></button>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 rounded-lg text-xs font-semibold">Graphic Design</span>
+                            <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 rounded-lg text-xs font-semibold">Banner</span>
+                            <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 rounded-lg text-xs font-semibold">Poster</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <button onclick="openLightbox('https://cdn.phototourl.com/free/2026-06-10-a52995c3-f9b8-40f9-9c03-258b67289e45.png')" class="flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-cyan-400 transition-colors">
+                                <i data-feather="external-link" class="w-4 h-4"></i> ดูผลงานเต็ม
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -495,9 +526,22 @@
 
     <!-- Image Modal (Lightbox) -->
     <div id="lightbox-modal" class="hidden fixed inset-0 z-[100] flex-col items-center justify-center bg-slate-950/90 p-4 md:p-10 backdrop-blur-md transition-opacity duration-300 opacity-0" onclick="closeLightbox()">
-        <div class="relative flex justify-center w-full max-w-5xl transition-transform duration-300 scale-95" id="lightbox-content">
-            <img id="lightbox-img" src="" alt="ภาพผลงานขนาดเต็ม" class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-[0_0_50px_rgba(217,70,239,0.3)] border border-white/10" onclick="event.stopPropagation()" />
-            <button class="absolute -top-12 right-0 md:-right-12 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 p-2 rounded-full transition-all border border-white/10" onclick="closeLightbox()">
+        <div class="relative flex items-center justify-center w-full max-w-6xl transition-transform duration-300 scale-95" id="lightbox-content" onclick="event.stopPropagation()">
+            
+            <!-- ปุ่มเลื่อนซ้าย (Prev) -->
+            <button class="absolute left-0 md:-left-16 text-white/50 hover:text-cyan-400 bg-slate-900/60 hover:bg-slate-800 p-2 md:p-3 rounded-full transition-all border border-white/10 z-10 backdrop-blur-sm shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:scale-110" onclick="prevImage(event)">
+                <i data-feather="chevron-left" class="w-8 h-8 md:w-10 md:h-10"></i>
+            </button>
+
+            <img id="lightbox-img" src="" alt="ภาพผลงานขนาดเต็ม" class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-[0_0_50px_rgba(6,182,212,0.3)] border border-white/10 transition-opacity duration-200" />
+            
+            <!-- ปุ่มเลื่อนขวา (Next) -->
+            <button class="absolute right-0 md:-right-16 text-white/50 hover:text-cyan-400 bg-slate-900/60 hover:bg-slate-800 p-2 md:p-3 rounded-full transition-all border border-white/10 z-10 backdrop-blur-sm shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:scale-110" onclick="nextImage(event)">
+                <i data-feather="chevron-right" class="w-8 h-8 md:w-10 md:h-10"></i>
+            </button>
+
+            <!-- ปุ่มปิด (Close) -->
+            <button class="absolute -top-12 right-0 md:-right-12 text-slate-400 hover:text-fuchsia-400 bg-slate-800 hover:bg-slate-700 p-2 rounded-full transition-all border border-white/10 shadow-lg" onclick="closeLightbox()">
                 <i data-feather="x" class="w-7 h-7"></i>
             </button>
         </div>
@@ -548,10 +592,10 @@
 
             navBtns.forEach(btn => {
                 if (btn.dataset.target === current) {
-                    btn.classList.add('text-fuchsia-400');
-                    btn.classList.remove('text-slate-400', 'text-cyan-400');
+                    btn.classList.add('text-cyan-400');
+                    btn.classList.remove('text-slate-400');
                 } else {
-                    btn.classList.remove('text-fuchsia-400', 'text-cyan-400');
+                    btn.classList.remove('text-cyan-400');
                     btn.classList.add('text-slate-400');
                 }
             });
@@ -611,13 +655,39 @@
 
         document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
-        // Lightbox Modal
+        // Lightbox Modal & Gallery
         const modal = document.getElementById('lightbox-modal');
         const modalImg = document.getElementById('lightbox-img');
         const modalContent = document.getElementById('lightbox-content');
+        
+        let galleryImages = [];
+        let currentImageIndex = 0;
+
+        // Auto-generate gallery array from all elements that open the lightbox
+        document.addEventListener('DOMContentLoaded', () => {
+            const triggers = document.querySelectorAll('[onclick^="openLightbox"]');
+            triggers.forEach(trigger => {
+                const match = trigger.getAttribute('onclick').match(/openLightbox\(['"](.*?)['"]\)/);
+                if (match && match[1]) {
+                    const url = match[1];
+                    // ป้องกันการนำรูปซ้ำเข้าใน Array แกลเลอรี
+                    if (!galleryImages.includes(url)) {
+                        galleryImages.push(url);
+                    }
+                }
+            });
+        });
 
         function openLightbox(src) {
-            modalImg.src = src;
+            // ค้นหารูปที่คลิกว่าอยู่ลำดับที่เท่าไหร่
+            currentImageIndex = galleryImages.indexOf(src);
+            // หากไม่พบในระบบสแกน ให้เพื่มเข้าไปใหม่ชั่วคราว
+            if (currentImageIndex === -1) {
+                galleryImages.push(src);
+                currentImageIndex = galleryImages.length - 1;
+            }
+
+            modalImg.src = galleryImages[currentImageIndex];
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             setTimeout(() => {
@@ -625,6 +695,9 @@
                 modalContent.classList.remove('scale-95');
                 modalContent.classList.add('scale-100');
             }, 10);
+            
+            // Re-render feather icons (เผื่อบัค UI)
+            if(window.feather) feather.replace();
         }
 
         function closeLightbox() {
@@ -637,6 +710,43 @@
                 modalImg.src = '';
             }, 300);
         }
+
+        function nextImage(event) {
+            if(event) event.stopPropagation();
+            if(galleryImages.length === 0) return;
+            
+            // เลื่อนไปรูปถัดไป (ถ้าถึงรูปสุดท้าย จะวนกลับไปรูปแรกสุด)
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            updateLightboxImage();
+        }
+
+        function prevImage(event) {
+            if(event) event.stopPropagation();
+            if(galleryImages.length === 0) return;
+            
+            // เลื่อนไปรูปก่อนหน้า (ถ้าอยู่รูปแรก จะวนไปรูปสุดท้าย)
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateLightboxImage();
+        }
+
+        function updateLightboxImage() {
+            // フェードเอฟเฟกต์ (Fade out)
+            modalImg.style.opacity = '0';
+            setTimeout(() => {
+                modalImg.src = galleryImages[currentImageIndex];
+                // フェードเอฟเฟกต์ (Fade in)
+                modalImg.style.opacity = '1';
+            }, 200); 
+        }
+
+        // Keyboard Navigation (ควบคุมผ่านแป้นพิมพ์)
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('hidden')) {
+                if (e.key === 'ArrowRight') nextImage();
+                else if (e.key === 'ArrowLeft') prevImage();
+                else if (e.key === 'Escape') closeLightbox();
+            }
+        });
     </script>
 </body>
 </html>
